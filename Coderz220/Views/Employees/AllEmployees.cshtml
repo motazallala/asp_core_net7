@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Employee>
+@{
+    ViewData["Title"] = "AllEmployees";
+}
+
+<h1>AllEmployees</h1>
+<a class="btn btn-success my-2" asp-action="AddEmployee">Add new Employee</a>
+@if (Model.Count()!=0)
+{
+<table class="table table-bordered">
+    <tr>
+        <td>@Html.DisplayNameFor(x=>x.EmployeeName)</td>
+        <td>@Html.DisplayNameFor(x=>x.Salary)</td>
+        <td>operations</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.EmployeeName</td>
+            <td>@item.Salary</td>
+            <td>
+                <a asp-action="Details" asp-controller="Employees" asp-route-id="@item.EmployeeId" class="btn btn-primary btn-sm">More Details</a>
+                    <a asp-action="Remove" asp-controller="Employees" asp-route-id="@item.EmployeeId" class="btn btn-danger btn-sm">Delete</a>
+                <a asp-action="Edit" asp-controller="Employees" asp-route-id="@item.EmployeeId" class="btn btn-warning btn-sm">Edit</a>
+            </td>
+        </tr>
+    }
+</table>
+}
+else{
+    <div class="alert alert-warning">
+        No Employee is Added
+    </div>
+}

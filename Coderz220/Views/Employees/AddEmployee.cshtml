@@ -1,0 +1,76 @@
+﻿@model Employee
+@{
+    ViewData["Title"] = "AddEmployee";
+}
+<div class="container">
+    <h1>AddEmployee</h1>
+    <form asp-controller="Employees" asp-action="AddEmployee" method="post">
+        <table class="table table-borderless">
+            <tr>
+                <td><label asp-for="EmployeeName"></label></td>
+                <td>
+                    <input asp-for="EmployeeName" class="form-control" />
+                    <span asp-validation-for="EmployeeName" class="text-danger"></span>
+                </td>
+            </tr>
+            <tr>
+                <td><label asp-for="Salary"></label></td>
+                <td>
+                    <input asp-for="Salary" class="form-control" />
+                    <span asp-validation-for="Salary" class="text-danger"></span>
+                </td>
+            </tr>
+            <tr>
+                <td><label asp-for="BOD"></label></td>
+                <td>
+                    <input asp-for="BOD" class="form-control" />
+                    <span asp-validation-for="BOD" class="text-danger"></span>
+                </td>
+            </tr>
+            <tr>
+                <td><label asp-for="Email"></label></td>
+                <td>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </td>
+            </tr>
+            <tr>
+                <td><label asp-for="Mobile"></label></td>
+                <td>
+                    <input asp-for="Mobile" class="form-control" />
+                    <span asp-validation-for="Mobile" class="text-danger"></span>
+                </td>
+            </tr>
+            <tr>
+                <td><label asp-for="Address"></label></td>
+                <td>
+                    <input asp-for="Address" class="form-control" />
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </td>
+            </tr>
+            <tr>
+                <td><label asp-for="City"></label></td>
+                <td>
+                    <input asp-for="City" class="form-control" />
+                    <span asp-validation-for="City" class="text-danger"></span>
+                </td>
+            </tr>
+            <tr>
+                <td><label asp-for="Status"></label></td>
+                <td>
+                    <input asp-for="Status" />
+                    <span asp-validation-for="Status" class="text-danger"></span>
+                </td>
+            </tr>
+        </table>
+
+        <div class="row">
+            <div class="col">
+                <a asp-action="AllEmployees" asp-controller="Employees" class="btn btn-warning">Back</a>
+            </div>
+            <div class="col text-end">
+                <input class="btn btn-outline-success" type="submit" value="Save" />
+            </div>
+        </div>   
+    </form>
+</div>

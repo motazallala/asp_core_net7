@@ -1,0 +1,50 @@
+﻿@model Employee
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+<div class="container">
+    <table class="table table-bordered">
+        <tr>
+            <td><label asp-for="EmployeeName"></label></td>
+            <td>@Model.EmployeeName</td>
+        </tr>
+        <tr>
+            <td><label asp-for="BOD"></label></td>
+            <td>@Model.BOD</td>
+        </tr>
+        <tr>
+            <td><label asp-for="Salary"></label></td>
+            <td>@Model.Salary</td>
+        </tr>
+        <tr>
+            <td><label asp-for="Address"></label></td>
+            <td>@Model.Address</td>
+        </tr>
+        <tr>
+            <td><label asp-for="City"></label></td>
+            <td>@Model.City</td>
+        </tr>
+        <tr>
+            <td><label asp-for="Email"></label></td>
+            <td>@Model.Email</td>
+        </tr>
+        <tr>
+            <td><label asp-for="Mobile"></label></td>
+            <td>@Model.Mobile</td>
+        </tr>
+        <tr>
+            <td><label asp-for="Status"></label></td>
+            <td><input asp-for="Status" disabled /></td>
+        </tr>
+    </table>
+    <div class="row">
+        <div class="col">
+            <a class="btn btn-warning" asp-action="AllEmployees">Back</a>
+        </div>
+        <div class="col text-end">
+            <a class="btn btn-primary" asp-action="Edit" asp-controller="Employees" asp-route-id="@Model.EmployeeId">Edit</a>
+        </div>
+    </div>
+</div>
