@@ -20,15 +20,49 @@
             <td>@item.Salary</td>
             <td>
                 <a asp-action="Details" asp-controller="Employees" asp-route-id="@item.EmployeeId" class="btn btn-primary btn-sm">More Details</a>
-                    <a asp-action="Remove" asp-controller="Employees" asp-route-id="@item.EmployeeId" class="btn btn-danger btn-sm">Delete</a>
+                    <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#@(item.EmployeeName+item.EmployeeId)">
+                        Delete
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="@(item.EmployeeName+item.EmployeeId)" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="@(item.EmployeeName+item.EmployeeId)Label" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="@(item.EmployeeName+item.EmployeeId)Label">Are you sure to delete @item.EmployeeName?</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="container-fluid">
+                                        <div class="col">
+                                            This will delete the Employee :
+                                        </div>
+                                        <div class="col">
+                                            Name : @item.EmployeeName
+                                        </div>
+                                    </div>
+                                        
+                                        
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <a asp-action="Remove" asp-controller="Employees" asp-route-id="@item.EmployeeId" class="btn btn-danger btn-sm">Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
                 <a asp-action="Edit" asp-controller="Employees" asp-route-id="@item.EmployeeId" class="btn btn-warning btn-sm">Edit</a>
             </td>
         </tr>
+
     }
 </table>
+
 }
 else{
     <div class="alert alert-warning">
         No Employee is Added
     </div>
 }
+
+

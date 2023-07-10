@@ -88,7 +88,7 @@ namespace Coderz220.Controllers
         {
             if (id == null)
             {
-                return View();
+                return RedirectToAction(nameof(AllEmployees));
             }
             var data = db.Employees.Find(id);
             if (data != null)
@@ -97,7 +97,7 @@ namespace Coderz220.Controllers
                 db.SaveChanges();
                 return RedirectToAction(nameof(AllEmployees));
             }
-            return View();
+            return RedirectToAction(nameof(AllEmployees));
         }
     }
 }
