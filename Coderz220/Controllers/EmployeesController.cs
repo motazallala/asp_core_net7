@@ -2,7 +2,9 @@
 
 using Coderz220.Data;
 using Coderz220.Models;
+using Coderz220.Models.viewData;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Coderz220.Controllers
 {
@@ -21,16 +23,32 @@ namespace Coderz220.Controllers
         }
         public IActionResult AddEmployee()
         {
+            ViewBag.departmentList = new SelectList(db.Departments, "DepartmentId", "DepartmentName");
             return View();
         }
         [HttpPost]
-        public IActionResult AddEmployee(Employee newEmployee)
+        public IActionResult AddEmployee(EmployeeViewData newEmployee)
         {
+
             if (newEmployee != null)
             {
                 if (ModelState.IsValid)
                 {
-                    db.Employees.Add(newEmployee);
+                    Employee employee = new Employee
+                    {
+                        EmployeeName = newEmployee.EmployeeName,
+                        BOD = newEmployee.BOD,
+                        Salary = newEmployee.Salary,
+                        Address = newEmployee.Address,
+                        City = newEmployee.City,
+                        Email = newEmployee.Email,
+                        Mobile = newEmployee.Mobile,
+                        Status = newEmployee.Status,
+                        DepartmentId = newEmployee.DepartmentId,
+
+
+                    };
+                    db.Employees.Add(employee);
                     db.SaveChanges();
                     return RedirectToAction(nameof(AllEmployees));
                 }

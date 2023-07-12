@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Coderz220.Migrations
 {
     [DbContext(typeof(CoderzDbContext))]
-    [Migration("20230707205121_initMig")]
+    [Migration("20230712144721_initMig")]
     partial class initMig
     {
         /// <inheritdoc />
@@ -47,6 +47,24 @@ namespace Coderz220.Migrations
                     b.ToTable("Customers");
                 });
 
+            modelBuilder.Entity("Coderz220.Models.Department", b =>
+                {
+                    b.Property<int>("DepartmentId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DepartmentId"));
+
+                    b.Property<string>("DepartmentName")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.HasKey("DepartmentId");
+
+                    b.ToTable("Departments");
+                });
+
             modelBuilder.Entity("Coderz220.Models.Employee", b =>
                 {
                     b.Property<int>("EmployeeId")
@@ -63,6 +81,9 @@ namespace Coderz220.Migrations
 
                     b.Property<string>("City")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("DepartmentId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
@@ -81,7 +102,20 @@ namespace Coderz220.Migrations
 
                     b.HasKey("EmployeeId");
 
+                    b.HasIndex("DepartmentId");
+
                     b.ToTable("Employees");
+                });
+
+            modelBuilder.Entity("Coderz220.Models.Employee", b =>
+                {
+                    b.HasOne("Coderz220.Models.Department", "Department")
+                        .WithMany()
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Department");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,10 +1,8 @@
-﻿// Ignore Spelling: Coderz
+﻿using System.ComponentModel.DataAnnotations;
 
-using System.ComponentModel.DataAnnotations;
-
-namespace Coderz220.Models
+namespace Coderz220.Models.viewData
 {
-    public class Employee
+    public class EmployeeViewData
     {
         [Display(Name = "Employee Id")]
         public int EmployeeId { get; set; }

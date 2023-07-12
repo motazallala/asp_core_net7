@@ -1,4 +1,4 @@
-﻿@model Employee
+﻿@model Coderz220.Models.viewData.EmployeeViewData
 @{
     ViewData["Title"] = "AddEmployee";
 }
@@ -53,6 +53,15 @@
                 <td>
                     <input asp-for="City" class="form-control" />
                     <span asp-validation-for="City" class="text-danger"></span>
+                </td>
+            </tr>
+            <tr>
+                <td><label asp-for="DepartmentId"></label></td>
+                <td>
+                    <select asp-for="DepartmentId" class="form-control" asp-items="ViewBag.departmentList">
+                       <option value="-1">Please Select One of this option</option>
+                   </select>
+                    <span asp-validation-for="DepartmentId" class="text-danger"></span>
                 </td>
             </tr>
             <tr>
