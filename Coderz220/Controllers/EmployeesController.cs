@@ -99,5 +99,27 @@ namespace Coderz220.Controllers
             }
             return RedirectToAction(nameof(AllEmployees));
         }
+
+        // Department 
+
+        public IActionResult CreateDepartment()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult CreateDepartment(Department newData)
+        {
+            if (ModelState.IsValid)
+            {
+                if (newData == null)
+                {
+                    return RedirectToAction(nameof(CreateDepartment));
+                }
+                db.Departments.Add(newData);
+                db.SaveChanges();
+                return RedirectToAction(nameof(AllEmployees));
+            }
+            return View(newData);
+        }
     }
 }

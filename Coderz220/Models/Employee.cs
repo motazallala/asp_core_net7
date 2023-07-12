@@ -27,8 +27,7 @@ namespace Coderz220.Models
 
         public bool Status { get; set; }
 
-        public int DepartmentId { get; set; }
 
-        public Department Department { get; set; }
+        public Department? Department { get; set; }
     }
 }
