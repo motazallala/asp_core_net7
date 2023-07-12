@@ -26,5 +26,9 @@ namespace Coderz220.Models
         public string? Mobile { get; set; }
 
         public bool Status { get; set; }
+
+        public int DepartmentId { get; set; }
+
+        public Department Department { get; set; }
     }
 }
