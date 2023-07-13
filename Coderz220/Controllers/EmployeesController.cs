@@ -2,9 +2,9 @@
 
 using Coderz220.Data;
 using Coderz220.Models;
-using Coderz220.Models.viewData;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace Coderz220.Controllers
 {
@@ -19,7 +19,9 @@ namespace Coderz220.Controllers
 
         public IActionResult AllEmployees()
         {
-            return View(db.Employees);
+            var data = db.Employees.Include(x => x.Department)
+                .OrderByDescending(emp => emp.EmployeeId);
+            return View(data);
         }
         public IActionResult AddEmployee()
         {
@@ -27,7 +29,7 @@ namespace Coderz220.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult AddEmployee(EmployeeViewData newEmployee)
+        public IActionResult AddEmployee(Employee newEmployee)
         {
 
             if (newEmployee != null)
@@ -76,14 +78,15 @@ namespace Coderz220.Controllers
         {
             if (id == null)
             {
-                return View();
+                return RedirectToAction(nameof(AllEmployees));
             }
             var data = db.Employees.Find(id);
             if (data != null)
             {
+                ViewBag.departmentList = new SelectList(db.Departments, "DepartmentId", "DepartmentName");
                 return View(data);
             }
-            return View();
+            return RedirectToAction(nameof(AllEmployees));
 
         }
         [HttpPost]

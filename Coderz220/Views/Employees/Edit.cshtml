@@ -59,6 +59,15 @@
                 </td>
             </tr>
             <tr>
+                <td><label asp-for="Department.DepartmentName"></label></td>
+                <td>
+                    <select asp-for="DepartmentId" class="form-control" asp-items="ViewBag.departmentList">
+                        <option value="-1">Please Select One of this option</option>
+                    </select>
+                    <span asp-validation-for="DepartmentId" class="text-danger"></span>
+                </td>
+            </tr>
+            <tr>
                 <td><label asp-for="Status"></label></td>
                 <td>
                     <input asp-for="Status" />

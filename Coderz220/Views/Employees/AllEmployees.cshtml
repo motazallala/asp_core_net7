@@ -11,6 +11,7 @@
     <tr>
         <td>@Html.DisplayNameFor(x=>x.EmployeeName)</td>
         <td>@Html.DisplayNameFor(x=>x.Salary)</td>
+            <td>@Html.DisplayNameFor(x=>x.Department!.DepartmentName)</td>
         <td>operations</td>
     </tr>
     @foreach (var item in Model)
@@ -18,6 +19,7 @@
         <tr>
             <td>@item.EmployeeName</td>
             <td>@item.Salary</td>
+                <td>@item.Department!.DepartmentName</td>
             <td>
                 <a asp-action="Details" asp-controller="Employees" asp-route-id="@item.EmployeeId" class="btn btn-primary btn-sm">More Details</a>
                     <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#@(item.EmployeeName+item.EmployeeId)">
