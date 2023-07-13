@@ -1,0 +1,25 @@
+﻿@model Department
+@{
+    ViewData["Title"] = "DetailsDepartment";
+}
+
+<h1>DetailsDepartment</h1>
+
+<div class="container">
+    <table class="table table-bordered">
+        <tr>
+            <td><label asp-for="DepartmentName"></label></td>
+            <td>@Model.DepartmentName</td>
+        </tr>
+    </table>
+    <div class="row">
+        <div class="col">
+            <a class="btn btn-warning" asp-action="test">Back</a>
+        </div>
+        <div class="col text-end">
+            <a class="btn btn-primary" asp-action="EditDepartment" asp-controller="Employees" asp-route-id="@Model.DepartmentId">Edit</a>
+        </div>
+    </div>
+</div>
+
+

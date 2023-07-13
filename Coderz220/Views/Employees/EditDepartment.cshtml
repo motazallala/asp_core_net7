@@ -1,0 +1,33 @@
+﻿@model Department
+@{
+    ViewData["Title"] = "EditDepartment";
+}
+
+
+
+
+<div class="container">
+    <h1>EditDepartment</h1>
+    <form asp-controller="Employees" asp-action="EditDepartment" method="post">
+        @Html.HiddenFor(x => x.DepartmentId)
+        <table class="table table-borderless">
+            <tr>
+                <td><label asp-for="DepartmentName"></label></td>
+                <td>
+                    <input asp-for="DepartmentName" class="form-control" />
+                    <span asp-validation-for="DepartmentName" class="text-danger"></span>
+                </td>
+            </tr>
+        </table>
+
+        <div class="row">
+            <div class="col">
+                <a asp-action="test" asp-controller="Employees" class="btn btn-warning">Back</a>
+            </div>
+            <div class="col text-end">
+                <input class="btn btn-outline-success" type="submit" value="Edit" />
+            </div>
+        </div>
+    </form>
+</div>
+
